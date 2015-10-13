@@ -764,12 +764,12 @@
 
 ## Whitespace
 
-  - Use soft tabs set to 2 spaces.
+  - Use spaces over tabs, keep 4 spaces as identation.
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
 
     // bad
@@ -779,7 +779,7 @@
 
     // good
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
     ```
 
