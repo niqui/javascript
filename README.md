@@ -98,8 +98,7 @@ Other Style Guides
     var a = 1;
     var b = 2;
 
-    // good
-    // (es6: const)
+    // good (es6: const)
     const a = 1;
     const b = 2;
     ```
@@ -147,8 +146,7 @@ Other Style Guides
     // (es6: const)
     const item = new Object();
 
-    // good
-    // (es6: const)
+    // good (es6: const)
     const item = {};
     ```
 
@@ -414,10 +412,10 @@ Other Style Guides
   - [6.1](#6.1) <a name='6.1'></a> Use single quotes `''` for strings.
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const name = "Capt. Janeway";
 
-    // good
+    // good (es6: const)
     const name = 'Capt. Janeway';
     ```
 
@@ -425,16 +423,16 @@ Other Style Guides
   - [6.3](#6.3) <a name='6.3'></a> Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
 
-    // bad
+    // bad (es6: const)
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
     fast.';
 
-    // good
+    // good (es6: const)
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
@@ -474,7 +472,7 @@ Other Style Guides
   > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const foo = function () {
     };
 
@@ -732,7 +730,7 @@ Other Style Guides
   > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const inherits = require('inherits');
     function PeekableQueue(contents) {
       Queue.apply(this, contents);
@@ -937,8 +935,7 @@ Other Style Guides
     // bad
     superPower = new SuperPower();
 
-    // good
-    // (es6: const)
+    // good (es6: const)
     const superPower = new SuperPower();
     ```
 
@@ -947,7 +944,7 @@ Other Style Guides
     > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const items = getItems(),
         goSportsTeam = true,
         dragonball = 'z';
@@ -1272,7 +1269,7 @@ Other Style Guides
   - [17.2](#17.2) <a name='17.2'></a> Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const active = true;  // is current tab
 
     // good
@@ -1406,7 +1403,7 @@ Other Style Guides
   - [18.4](#18.4) <a name='18.4'></a> Set off operators with spaces.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const x=y+5;
 
     // good
@@ -1460,7 +1457,7 @@ Other Style Guides
       .find('.open')
         .updateCount();
 
-    // bad
+    // bad  (es6: const)
     const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
         .attr('width', (radius + margin) * 2).append('svg:g')
         .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
@@ -1493,7 +1490,7 @@ Other Style Guides
 
     return baz;
 
-    // bad
+    // bad  (es6: const)
     const obj = {
       foo() {
       },
@@ -1513,7 +1510,7 @@ Other Style Guides
 
     return obj;
 
-    // bad
+    // bad  (es6: const)
     const arr = [
       function foo() {
       },
@@ -1542,7 +1539,7 @@ Other Style Guides
   - [19.1](#19.1) <a name='19.1'></a> Leading commas: **Nope.**
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const story = [
         once
       , upon
@@ -1556,7 +1553,7 @@ Other Style Guides
       aTime,
     ];
 
-    // bad
+    // bad  (es6: const)
     const hero = {
         firstName: 'Ada'
       , lastName: 'Lovelace'
@@ -1593,7 +1590,7 @@ Other Style Guides
     +    inventorOf: ['coxcomb chart', 'modern nursing'],
     };
 
-    // bad
+    // bad  (es6: const)
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully'
@@ -1656,7 +1653,7 @@ Other Style Guides
     ```javascript (es6: arrows)
     //  => this.reviewScore = 9;
 
-    // bad
+    // bad  (es6: const)
     const totalScore = this.reviewScore + '';
 
     // good
@@ -1668,16 +1665,16 @@ Other Style Guides
     ```javascript
     const inputValue = '4';
 
-    // bad
+    // bad  (es6: const)
     const val = new Number(inputValue);
 
-    // bad
+    // bad  (es6: const)
     const val = +inputValue;
 
-    // bad
+    // bad  (es6: const)
     const val = inputValue >> 0;
 
-    // bad
+    // bad  (es6: const)
     const val = parseInt(inputValue);
 
     // good
@@ -1712,7 +1709,7 @@ Other Style Guides
     ```javascript
     const age = 0;
 
-    // bad
+    // bad  (es6: const)
     const hasAge = new Boolean(age);
 
     // good
@@ -1744,7 +1741,7 @@ Other Style Guides
   - [22.2](#22.2) <a name='22.2'></a> Use camelCase when naming objects, functions, and instances.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const OBJEcttsssss = {};
     const this_is_my_object = {};
     function c() {}
@@ -1950,7 +1947,7 @@ Other Style Guides
   - [25.1](#25.1) <a name='25.1'></a> Prefix jQuery object variables with a `$`.
 
     ```javascript
-    // bad
+    // bad  (es6: const)
     const sidebar = $('.sidebar');
 
     // good
