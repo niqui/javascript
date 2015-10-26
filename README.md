@@ -203,7 +203,7 @@ Other Style Guides
     };
     obj[getKey('enabled')] = true;
 
-    // good (es6: const)
+    // good (es6: const, Enhanced Object)
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -215,7 +215,7 @@ Other Style Guides
   - [3.5](#3.5) <a name='3.5'></a> Use object method shorthand.
 
     ```javascript
-    // bad (es6: const)
+    // bad (es6: const, Enhanced Object)
     const atom = {
       value: 1,
 
@@ -224,7 +224,7 @@ Other Style Guides
       },
     };
 
-    // good (es6: const)
+    // good (es6: const, Enhanced Object)
     const atom = {
       value: 1,
 
@@ -248,7 +248,7 @@ Other Style Guides
       lukeSkywalker: lukeSkywalker,
     };
 
-    // good (es6: const)
+    // good (es6: const, Enhanced Object)
     const obj = {
       lukeSkywalker,
     };
@@ -263,7 +263,7 @@ Other Style Guides
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad (es6: const)
+    // bad (es6: const, Enhanced Object)
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
@@ -273,7 +273,7 @@ Other Style Guides
       anakinSkywalker,
     };
 
-    // good (es6: const)
+    // good (es6: const, Enhanced Object)
     const obj = {
       lukeSkywalker,
       anakinSkywalker,
@@ -330,7 +330,7 @@ Other Style Guides
   - [4.4](#4.4) <a name='4.4'></a> To convert an array-like object to an array, use Array#from.
 
     ```javascript
-    // (es6: const)
+    // (es6: const, Array)
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
     ```
@@ -373,7 +373,7 @@ Other Style Guides
     const first = arr[0];
     const second = arr[1];
 
-    // good (es6: const)
+    // good (es6: const, destructuring)
     const [first, second] = arr;
     ```
 
