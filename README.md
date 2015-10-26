@@ -142,8 +142,7 @@ Other Style Guides
   - [3.1](#3.1) <a name='3.1'></a> Use the literal syntax for object creation.
 
     ```javascript
-    // bad
-    // (es6: const)
+    // bad (es6: const)
     const item = new Object();
 
     // good (es6: const)
