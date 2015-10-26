@@ -61,6 +61,7 @@ Other Style Guides
     + `undefined`
 
     ```javascript
+    // (es6: let, const)
     const foo = 1;
     let bar = foo;
 
@@ -75,6 +76,7 @@ Other Style Guides
     + `function`
 
     ```javascript
+    // (es6: const)
     const foo = [1, 2];
     const bar = foo;
 
@@ -97,6 +99,7 @@ Other Style Guides
     var b = 2;
 
     // good
+    // (es6: const)
     const a = 1;
     const b = 2;
     ```
@@ -113,6 +116,7 @@ Other Style Guides
     }
 
     // good, use the let.
+    // (es6: let)
     let count = 1;
     if (true) {
       count += 1;
@@ -123,6 +127,7 @@ Other Style Guides
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
+    // (es6: let, const)
     {
       let a = 1;
       const b = 1;
@@ -139,22 +144,24 @@ Other Style Guides
 
     ```javascript
     // bad
+    // (es6: const)
     const item = new Object();
 
     // good
+    // (es6: const)
     const item = {};
     ```
 
   - [3.2](#3.2) <a name='3.2'></a> If your code will be executed in browsers in script context, don't use [reserved words](http://es5.github.io/#x7.6.1) as keys. It won't work in IE8. [More info](https://github.com/airbnb/javascript/issues/61). It’s OK to use them in ES6 modules and server-side code.
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const superman = {
       default: { clark: 'kent' },
       private: true,
     };
 
-    // good
+    // good (es6: const)
     const superman = {
       defaults: { clark: 'kent' },
       hidden: true,
@@ -164,17 +171,17 @@ Other Style Guides
   - [3.3](#3.3) <a name='3.3'></a> Use readable synonyms in place of reserved words.
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const superman = {
       class: 'alien',
     };
 
-    // bad
+    // bad (es6: const)
     const superman = {
       klass: 'alien',
     };
 
-    // good
+    // good (es6: const)
     const superman = {
       type: 'alien',
     };
@@ -192,14 +199,14 @@ Other Style Guides
       return `a key named ${k}`;
     }
 
-    // bad
+    // bad (es6: const)
     const obj = {
       id: 5,
       name: 'San Francisco',
     };
     obj[getKey('enabled')] = true;
 
-    // good
+    // good (es6: const)
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -211,7 +218,7 @@ Other Style Guides
   - [3.5](#3.5) <a name='3.5'></a> Use object method shorthand.
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const atom = {
       value: 1,
 
@@ -220,7 +227,7 @@ Other Style Guides
       },
     };
 
-    // good
+    // good (es6: const)
     const atom = {
       value: 1,
 
@@ -236,14 +243,15 @@ Other Style Guides
   > Why? It is shorter to write and descriptive.
 
     ```javascript
+    // (es6: const)
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // bad (es6: const)
     const obj = {
       lukeSkywalker: lukeSkywalker,
     };
 
-    // good
+    // good (es6: const)
     const obj = {
       lukeSkywalker,
     };
@@ -254,10 +262,11 @@ Other Style Guides
   > Why? It's easier to tell which properties are using the shorthand.
 
     ```javascript
+    // (es6: const)
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // bad (es6: const)
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
@@ -267,7 +276,7 @@ Other Style Guides
       anakinSkywalker,
     };
 
-    // good
+    // good (es6: const)
     const obj = {
       lukeSkywalker,
       anakinSkywalker,
@@ -285,16 +294,17 @@ Other Style Guides
   - [4.1](#4.1) <a name='4.1'></a> Use the literal syntax for array creation.
 
     ```javascript
-    // bad
+    // bad (es6: const)
     const items = new Array();
 
-    // good
+    // good (es6: const)
     const items = [];
     ```
 
   - [4.2](#4.2) <a name='4.2'></a> Use Array#push instead of direct assignment to add items to an array.
 
     ```javascript
+    // (es6: const)
     const someStack = [];
 
     // bad
@@ -308,7 +318,7 @@ Other Style Guides
   - [4.3](#4.3) <a name='4.3'></a> Use array spreads `...` to copy arrays.
 
     ```javascript
-    // bad
+    // bad (es6: let, const)
     const len = items.length;
     const itemsCopy = [];
     let i;
@@ -317,12 +327,13 @@ Other Style Guides
       itemsCopy[i] = items[i];
     }
 
-    // good
+    // good (es6: const)
     const itemsCopy = [...items];
     ```
   - [4.4](#4.4) <a name='4.4'></a> To convert an array-like object to an array, use Array#from.
 
     ```javascript
+    // (es6: const)
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
     ```
@@ -336,14 +347,14 @@ Other Style Guides
   > Why? Destructuring saves you from creating temporary references for those properties.
 
     ```javascript
-    // bad (es6: Template Strings)
+    // bad (es6: Template Strings, const)
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
       return `${firstName} ${lastName}`;
     }
 
-    // good (es6: Template Strings)
+    // good (es6: Template Strings, const)
     function getFullName(obj) {
       const { firstName, lastName } = obj;
       return `${firstName} ${lastName}`;
@@ -358,13 +369,14 @@ Other Style Guides
   - [5.2](#5.2) <a name='5.2'></a> Use array destructuring.
 
     ```javascript
+    // (es6: const)
     const arr = [1, 2, 3, 4];
 
-    // bad
+    // bad (es6: const)
     const first = arr[0];
     const second = arr[1];
 
-    // good
+    // good (es6: const)
     const [first, second] = arr;
     ```
 
@@ -380,6 +392,7 @@ Other Style Guides
     }
 
     // the caller needs to think about the order of return data
+    // (es6: const, destructuring, object matching)
     const [left, __, top] = processInput(input);
 
     // good
@@ -389,6 +402,7 @@ Other Style Guides
     }
 
     // the caller selects only the data they need
+    // (es6: destructuring, object matching)
     const { left, right } = processInput(input);
     ```
 
