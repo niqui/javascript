@@ -188,6 +188,7 @@ Other Style Guides
     ```javascript
 
     function getKey(k) {
+      // (es6: Template Strings)
       return `a key named ${k}`;
     }
 
@@ -335,21 +336,20 @@ Other Style Guides
   > Why? Destructuring saves you from creating temporary references for those properties.
 
     ```javascript
-    // bad
+    // bad (es6: Template Strings)
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
-
       return `${firstName} ${lastName}`;
     }
 
-    // good
+    // good (es6: Template Strings)
     function getFullName(obj) {
       const { firstName, lastName } = obj;
       return `${firstName} ${lastName}`;
     }
 
-    // best
+    // best (es6: Template Strings, Destructuring)
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
     }
@@ -427,7 +427,7 @@ Other Style Guides
     ```
 
   <a name="es6-template-literals"></a>
-  - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation.
+  - [6.4](#6.4) (_es6_: Template Strings) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation.
 
   > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
 
@@ -444,6 +444,7 @@ Other Style Guides
 
     // good
     function sayHi(name) {
+      // (es6: Template Strings)
       return `How are you, ${name}?`;
     }
     ```
@@ -471,7 +472,7 @@ Other Style Guides
   - [7.2](#7.2) <a name='7.2'></a> Function expressions:
 
     ```javascript
-    // immediately-invoked function expression (IIFE)
+    // (es6: arrows) immediately-invoked function expression (IIFE)
     (() => {
       console.log('Welcome to the Internet. Please follow me.');
     })();
@@ -491,6 +492,7 @@ Other Style Guides
     // good
     let test;
     if (currentUser) {
+      // (es6: arrows)
       test = () => {
         console.log('Yup.');
       };
@@ -512,7 +514,7 @@ Other Style Guides
     ```
 
   <a name="es6-rest"></a>
-  - [7.6](#7.6) <a name='7.6'></a> Never use `arguments`, opt to use rest syntax `...` instead.
+  - [7.6](#7.6) (es6: Rest) <a name='7.6'></a> Never use `arguments`, opt to use rest syntax `...` instead.
 
   > Why? `...` is explicit about which arguments you want pulled. Plus rest arguments are a real Array and not Array-like like `arguments`.
 
@@ -523,14 +525,14 @@ Other Style Guides
       return args.join('');
     }
 
-    // good
+    // good (es6: Rest)
     function concatenateAll(...args) {
       return args.join('');
     }
     ```
 
   <a name="es6-default-parameters"></a>
-  - [7.7](#7.7) <a name='7.7'></a> Use default parameter syntax rather than mutating function arguments.
+  - [7.7](#7.7) (es6: Defaults) <a name='7.7'></a> Use default parameter syntax rather than mutating function arguments.
 
     ```javascript
     // really bad
@@ -550,7 +552,7 @@ Other Style Guides
       // ...
     }
 
-    // good
+    // good (es6: Defaults)
     function handleThings(opts = {}) {
       // ...
     }
@@ -575,12 +577,12 @@ Other Style Guides
   - [7.9](#7.9) <a name='7.9'></a> Always put default parameters last.
 
     ```javascript
-    // bad
+    // bad (es6: Defaults)
     function handleThings(opts = {}, name) {
       // ...
     }
 
-    // good
+    // good (es6: Defaults)
     function handleThings(name, opts = {}) {
       // ...
     }
@@ -602,7 +604,7 @@ Other Style Guides
 
 ## Arrow Functions
 
-  - [8.1](#8.1) <a name='8.1'></a> When you must use function expressions (as when passing an anonymous function), use arrow function notation.
+  - [8.1](#8.1) (es6: arrows) <a name='8.1'></a> When you must use function expressions (as when passing an anonymous function), use arrow function notation.
 
   > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
@@ -615,7 +617,7 @@ Other Style Guides
       return x * y;
     });
 
-    // good
+    // good (es6: arrows)
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -629,16 +631,16 @@ Other Style Guides
   > Why not? If you plan on returning an object.
 
     ```javascript
-    // good
+    // good (es6: arrows, Template Strings)
     [1, 2, 3].map(number => `A string containing the ${number}.`);
 
-    // bad
+    // bad (es6: arrows, Template Strings)
     [1, 2, 3].map(number => {
       const nextNumber = number + 1;
       `A string containing the ${nextNumber}.`;
     });
 
-    // good
+    // good (es6: arrows, Template Strings)
     [1, 2, 3].map(number => {
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
@@ -650,13 +652,13 @@ Other Style Guides
   > Why? It shows clearly where the function starts and ends.
 
     ```js
-    // bad
+    // bad (es6: arrows, Template Strings)
     [1, 2, 3].map(number => 'As time went by, the string containing the ' +
       `${number} became much longer. So we needed to break it over multiple ` +
       'lines.'
     );
 
-    // good
+    // good (es6: arrows, Template Strings)
     [1, 2, 3].map(number => (
       `As time went by, the string containing the ${number} became much ` +
       'longer. So we needed to break it over multiple lines.'
@@ -669,10 +671,10 @@ Other Style Guides
   > Why? Less visual clutter.
 
     ```js
-    // good
+    // good (es6: arrows)
     [1, 2, 3].map(x => x * x);
 
-    // good
+    // good (es6: arrows)
     [1, 2, 3].reduce((y, x) => x + y);
     ```
 
@@ -681,7 +683,7 @@ Other Style Guides
 
 ## Constructors
 
-  - [9.1](#9.1) <a name='9.1'></a> Always use `class`. Avoid manipulating `prototype` directly.
+  - [9.1](#9.1) (es6: constructor) <a name='9.1'></a> Always use `class`. Avoid manipulating `prototype` directly.
 
   > Why? `class` syntax is more concise and easier to reason about.
 
@@ -699,6 +701,7 @@ Other Style Guides
 
     // good
     class Queue {
+      // (es6: constructor)
       constructor(contents = []) {
         this._queue = [...contents];
       }
@@ -710,7 +713,7 @@ Other Style Guides
     }
     ```
 
-  - [9.2](#9.2) <a name='9.2'></a> Use `extends` for inheritance.
+  - [9.2](#9.2) (es6: classes, extends) <a name='9.2'></a> Use `extends` for inheritance.
 
   > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
@@ -725,7 +728,7 @@ Other Style Guides
       return this._queue[0];
     }
 
-    // good
+    // good (es6: classes, extends)
     class PeekableQueue extends Queue {
       peek() {
         return this._queue[0];
@@ -750,7 +753,7 @@ Other Style Guides
     luke.jump(); // => true
     luke.setHeight(20); // => undefined
 
-    // good
+    // good (es6: classes)
     class Jedi {
       jump() {
         this.jumping = true;
@@ -773,6 +776,7 @@ Other Style Guides
   - [9.4](#9.4) <a name='9.4'></a> It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
 
     ```javascript
+    // (es6: classes, constructor)
     class Jedi {
       constructor(options = {}) {
         this.name = options.name || 'no name';
@@ -783,6 +787,7 @@ Other Style Guides
       }
 
       toString() {
+        // (es6: Template Strings)
         return `Jedi - ${this.getName()}`;
       }
     }
@@ -793,20 +798,20 @@ Other Style Guides
 
 ## Modules
 
-  - [10.1](#10.1) <a name='10.1'></a> Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#10.1) (es6: modules) <a name='10.1'></a> Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
   > Why? Modules are the future, let's start using the future now.
 
     ```javascript
-    // bad
+    // bad (es6: modules)
     const AirbnbStyleGuide = require('./AirbnbStyleGuide');
     module.exports = AirbnbStyleGuide.es6;
 
-    // ok
+    // ok (es6: modules)
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     export default AirbnbStyleGuide.es6;
 
-    // best
+    // best (es6: modules)
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
@@ -816,10 +821,10 @@ Other Style Guides
   > Why? This makes sure you have a single default export.
 
     ```javascript
-    // bad
+    // bad (es6: modules)
     import * as AirbnbStyleGuide from './AirbnbStyleGuide';
 
-    // good
+    // good (es6: modules)
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     ```
 
@@ -828,12 +833,12 @@ Other Style Guides
   > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
 
     ```javascript
-    // bad
-    // filename es6.js
+    // bad (es6: modules)
+    // filename es6.js 
     export { es6 as default } from './airbnbStyleGuide';
 
-    // good
-    // filename es6.js
+    // good (es6: modules)
+    // filename es6.js 
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
@@ -849,7 +854,7 @@ Other Style Guides
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
 
-    // bad
+    // bad (es6: let)
     let sum = 0;
     for (let num of numbers) {
       sum += num;
@@ -857,12 +862,12 @@ Other Style Guides
 
     sum === 15;
 
-    // good
+    // good (es6: arrows, let)
     let sum = 0;
     numbers.forEach((num) => sum += num);
     sum === 15;
 
-    // best (use the functional force)
+    // best (use the functional force) (es6: arrows)
     const sum = numbers.reduce((total, num) => total + num, 0);
     sum === 15;
     ```
@@ -879,15 +884,16 @@ Other Style Guides
   - [12.1](#12.1) <a name='12.1'></a> Use dot notation when accessing properties.
 
     ```javascript
+    // (es6: const)
     const luke = {
       jedi: true,
       age: 28,
     };
 
-    // bad
+    // bad (es6: const)
     const isJedi = luke['jedi'];
 
-    // good
+    // good (es6: const)
     const isJedi = luke.jedi;
     ```
 
@@ -918,6 +924,7 @@ Other Style Guides
     superPower = new SuperPower();
 
     // good
+    // (es6: const)
     const superPower = new SuperPower();
     ```
 
@@ -943,12 +950,12 @@ Other Style Guides
     const dragonball = 'z';
     ```
 
-  - [13.3](#13.3) <a name='13.3'></a> Group all your `const`s and then group all your `let`s.
+  - [13.3](#13.3) (es6: let, const) <a name='13.3'></a> Group all your `const`s and then group all your `let`s.
 
   > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
     ```javascript
-    // bad
+    // bad (es6: let)
     let i, len, dragonball,
         items = getItems(),
         goSportsTeam = true;
@@ -1283,6 +1290,7 @@ Other Style Guides
   - [17.4](#17.4) <a name='17.4'></a> Use `// FIXME:` to annotate problems.
 
     ```javascript
+    // (es6: classes)
     class Calculator extends Abacus {
       constructor() {
         super();
@@ -1296,6 +1304,7 @@ Other Style Guides
   - [17.5](#17.5) <a name='17.5'></a> Use `// TODO:` to annotate solutions to problems.
 
     ```javascript
+    // (es6: classes)
     class Calculator extends Abacus {
       constructor() {
         super();
@@ -1607,13 +1616,13 @@ Other Style Guides
       return name
     })()
 
-    // good
+    // good (es6: arrows)
     (() => {
       const name = 'Skywalker';
       return name;
     })();
 
-    // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
+    // good (guards against the function becoming an argument when two files with IIFEs are concatenated) (es6: arrows)
     ;(() => {
       const name = 'Skywalker';
       return name;
@@ -1630,7 +1639,7 @@ Other Style Guides
   - [21.1](#21.1) <a name='21.1'></a> Perform type coercion at the beginning of the statement.
   - [21.2](#21.2) <a name='21.2'></a> Strings:
 
-    ```javascript
+    ```javascript (es6: arrows)
     //  => this.reviewScore = 9;
 
     // bad
@@ -1785,7 +1794,7 @@ Other Style Guides
       };
     }
 
-    // good
+    // good (es6: arrows)
     function foo() {
       return () => {
         console.log(this);
@@ -1795,20 +1804,20 @@ Other Style Guides
 
   - [22.6](#22.6) <a name='22.6'></a> If your file exports a single class, your filename should be exactly the name of the class.
     ```javascript
-    // file contents
+    // file contents (es6: modules)
     class CheckBox {
       // ...
     }
     export default CheckBox;
 
     // in some other file
-    // bad
+    // bad (es6: modules)
     import CheckBox from './checkBox';
 
-    // bad
+    // bad (es6: modules)
     import CheckBox from './check_box';
 
-    // good
+    // good (es6: modules)
     import CheckBox from './CheckBox';
     ```
 
@@ -1817,7 +1826,7 @@ Other Style Guides
     ```javascript
     function makeStyleGuide() {
     }
-
+    // (es6: modules)
     export default makeStyleGuide;
     ```
 
@@ -1828,7 +1837,7 @@ Other Style Guides
       es6: {
       }
     };
-
+    // (es6: modules)
     export default AirbnbStyleGuide;
     ```
 
