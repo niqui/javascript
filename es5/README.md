@@ -564,60 +564,6 @@
     ```
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
-  
-  - One var per scope
-    
-    ```javascript
-    // bad
-    function start() {
-      var myVar1 = 1;
-      var myVar2 = 2;
-      var myVar3 = 3;
-
-      //..other stuff..
-      var myVar4 = 4;
-    }
-    
-    // good
-    function start() {
-      var myVar1,
-          myVar2, 
-          myVar3, 
-          myVar4;
-
-      myVar1 = 1;
-      myVar2 = 2;
-      myVar3 = 3;
-      
-      //..other stuff..
-      myVar4 = 4;
-      
-      function stop() {
-        var myVar5,
-            myVar6, 
-            myVar7, 
-            myVar8;
-        
-        //..more stuff..
-      }
-    }
-    
-    // good - you can mix defaults
-    function() {
-      var myVar1 = 1,
-          myVar2, 
-          myVar3, 
-          myVar4;
-
-      myVar2 = 2;
-      myVar3 = 3;
-      
-      //..other stuff..
-      myVar4 = 4;
-    }
-    
-    ```
-    
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -818,12 +764,12 @@
 
 ## Whitespace
 
-  - Use spaces over tabs, keep 4 spaces as identation.
+  - Use soft tabs set to 2 spaces.
 
     ```javascript
     // bad
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
 
     // bad
@@ -833,7 +779,7 @@
 
     // good
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
     ```
 
